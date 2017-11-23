@@ -35,6 +35,7 @@ module.exports = {
 		alias: {
 			'vue$': 'vue/dist/vue.esm.js',
 		},
+		extensions: ['*', '.js', '.vue', '.json'],
 	},
 	devServer: {
 		historyApiFallback: true,
@@ -55,8 +56,7 @@ if (process.env.NODE_ENV === 'production') {
 			'process.env': {
 				NODE_ENV: '"production"',
 			},
-		}),
-		new webpack.optimize.UglifyJsPlugin({
+		}), new webpack.optimize.UglifyJsPlugin({
 			sourceMap: false,
 			ie8: true,
 			mangle: {
@@ -74,8 +74,7 @@ if (process.env.NODE_ENV === 'production') {
 				
 				//drop_console: true,
 			},
-		}),
-		new webpack.optimize.OccurrenceOrderPlugin(true),
+		}), new webpack.optimize.OccurrenceOrderPlugin(true),
 		new webpack.LoaderOptionsPlugin({
 			minimize: true,
 		}),]);
